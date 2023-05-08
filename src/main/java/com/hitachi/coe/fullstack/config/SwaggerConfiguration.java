@@ -24,6 +24,7 @@ public class SwaggerConfiguration {
                 .build().apiInfo(apiInfo());
     }
 
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Fullstack CoE Management System")
