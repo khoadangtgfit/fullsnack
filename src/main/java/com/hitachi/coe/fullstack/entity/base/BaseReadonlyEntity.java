@@ -8,5 +8,5 @@ import java.io.Serializable;
  */
 public interface BaseReadonlyEntity<ID extends Serializable> { //NOSONAR
 
-//    ID getId();
+    ID getId();
 }

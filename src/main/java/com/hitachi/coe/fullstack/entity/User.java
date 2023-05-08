@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -32,6 +33,7 @@ public class User extends BaseAudit implements BaseReadonlyEntity<Integer> {
 	
 	//bi-directional many-to-one association to Group
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Group group;
 
 }

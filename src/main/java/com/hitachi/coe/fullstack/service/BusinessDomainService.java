@@ -3,6 +3,7 @@ package com.hitachi.coe.fullstack.service;
 
 import java.util.List;
 
+import com.hitachi.coe.fullstack.entity.BusinessDomain;
 import com.hitachi.coe.fullstack.model.BusinessDomainModel;
 
 /**
@@ -13,5 +14,5 @@ import com.hitachi.coe.fullstack.model.BusinessDomainModel;
 public interface BusinessDomainService {
     
     List<BusinessDomainModel> getBusinessDomains();
-
+    BusinessDomainModel addBusinessDomain(Integer practice_id,BusinessDomainModel businessDomainModel);
 }

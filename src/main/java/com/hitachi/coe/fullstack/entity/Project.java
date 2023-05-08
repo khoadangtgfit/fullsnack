@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -59,19 +60,23 @@ public class Project extends BaseAudit implements BaseReadonlyEntity<Integer> {
 	//bi-directional many-to-one association to BusinessDomain
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="business_domain_id")
+	@JsonIgnore
 	private BusinessDomain businessDomain;
 
 	//bi-directional many-to-one association to ProjectType
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="project_type_id")
+	@JsonIgnore
 	private ProjectType projectType;
 
 	//bi-directional many-to-one association to ProjectFeedback
 	@OneToMany(mappedBy="project", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<ProjectFeedback> projectFeedbacks;
 
 	//bi-directional many-to-one association to ProjectTech
 	@OneToMany(mappedBy="project", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<ProjectTech> projectTeches;
 
 }

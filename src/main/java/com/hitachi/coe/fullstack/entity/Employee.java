@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -52,27 +53,33 @@ public class Employee extends BaseAudit implements BaseReadonlyEntity<Integer> {
 
 	//bi-directional many-to-one association to BusinessUnit
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="bussiness_unit_id")
+	@JoinColumn(name="business_unit_id")
+	@JsonIgnore
 	private BusinessUnit businessUnit;
 
 	//bi-directional many-to-one association to EmployeeEvaluation
 	@OneToMany(mappedBy="employee1", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<EmployeeEvaluation> employeeEvaluations1;
 
 	//bi-directional many-to-one association to EmployeeEvaluation
 	@OneToMany(mappedBy="employee2", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<EmployeeEvaluation> employeeEvaluations2;
 
 	//bi-directional many-to-one association to EmployeeLevel
 	@OneToMany(mappedBy="employee", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<EmployeeLevel> employeeLevels;
 
 	//bi-directional many-to-one association to EmployeeSkill
 	@OneToMany(mappedBy="employee", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<EmployeeSkill> employeeSkills;
 
 	//bi-directional many-to-one association to ProjectFeedback
 	@OneToMany(mappedBy="employee", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<ProjectFeedback> projectFeedbacks;
 
 }

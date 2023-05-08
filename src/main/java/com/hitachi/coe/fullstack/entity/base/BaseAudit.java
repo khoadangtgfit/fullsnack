@@ -29,7 +29,7 @@ import lombok.Data;
 public class BaseAudit {
         
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created", updatable = false, nullable = false)
+    @Column(name = "created_date", updatable = false, nullable = false)
     @CreatedDate
     private Date created;
 
@@ -38,7 +38,7 @@ public class BaseAudit {
     private String createdBy;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated", nullable = true)
+    @Column(name = "updated_date", nullable = true)
     @LastModifiedDate
     private Date updated;
 

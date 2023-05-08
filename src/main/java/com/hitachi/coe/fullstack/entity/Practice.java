@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -40,11 +41,13 @@ public class Practice extends BaseAudit implements BaseReadonlyEntity<Integer> {
 
 	//bi-directional many-to-one association to BusinessDomain
 	@OneToMany(mappedBy="practice", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<BusinessDomain> businessDomains;
 
 	//bi-directional many-to-one association to BusinessUnit
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="business_unit_id")
+	@JsonIgnore
 	private BusinessUnit businessUnit;
 
 }

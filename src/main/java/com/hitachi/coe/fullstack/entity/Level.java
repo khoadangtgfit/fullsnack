@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -36,6 +37,7 @@ public class Level extends BaseAudit implements BaseReadonlyEntity<Integer> {
 
 	//bi-directional many-to-one association to EmployeeLevel
 	@OneToMany(mappedBy="level", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<EmployeeLevel> employeeLevels;
 
 }

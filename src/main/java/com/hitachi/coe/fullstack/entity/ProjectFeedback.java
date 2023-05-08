@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -42,10 +43,12 @@ public class ProjectFeedback extends BaseAudit implements BaseReadonlyEntity<Int
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Employee employee;
 
 	//bi-directional many-to-one association to Project
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Project project;
 
 }

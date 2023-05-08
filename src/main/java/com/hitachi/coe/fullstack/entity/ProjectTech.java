@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -34,6 +35,7 @@ public class ProjectTech extends BaseAudit implements BaseReadonlyEntity<Integer
 	//bi-directional many-to-one association to SkillSet
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="skill_set_id")
+	@JsonIgnore
 	private SkillSet skillSet;
 
 }

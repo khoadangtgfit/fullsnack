@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -42,10 +43,12 @@ public class EmployeeEvaluation extends BaseAudit implements BaseReadonlyEntity<
 	//bi-directional many-to-one association to Employee
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="evaluator_id")
+	@JsonIgnore
 	private Employee employee1;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="employee_id")
+	@JsonIgnore
 	private Employee employee2;
 }

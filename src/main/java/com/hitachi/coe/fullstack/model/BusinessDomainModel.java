@@ -6,6 +6,7 @@ import com.hitachi.coe.fullstack.entity.Practice;
 import com.hitachi.coe.fullstack.entity.Project;
 import com.hitachi.coe.fullstack.model.base.AuditModel;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class BusinessDomainModel extends AuditModel<Integer> {
 
     /**
@@ -25,9 +27,9 @@ public class BusinessDomainModel extends AuditModel<Integer> {
 	private String description;
 
 	private String name;
-	
+
 	private Practice practice;
 	
 	private List<Project> projects;
-    
+
 }

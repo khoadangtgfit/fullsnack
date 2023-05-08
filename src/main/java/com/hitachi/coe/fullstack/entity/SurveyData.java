@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
 import lombok.Getter;
@@ -57,6 +58,7 @@ public class SurveyData implements BaseReadonlyEntity<Integer> {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="start_time")
+	@JsonIgnore
 	private Date startTime;
 
 	private Integer waterfall;
