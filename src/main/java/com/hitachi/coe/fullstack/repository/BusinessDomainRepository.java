@@ -17,7 +17,7 @@ public interface BusinessDomainRepository extends JpaRepository<BusinessDomain, 
     @Query(value = "SELECT bd.* FROM business_domain bd", nativeQuery = true)
     List<BusinessDomain> getBusinessDomains();
     
-//    @Override
-//    BusinessDomain save(BusinessDomain businessDomain);
+    @Override
+    BusinessDomain save(BusinessDomain businessDomain);
 }
 

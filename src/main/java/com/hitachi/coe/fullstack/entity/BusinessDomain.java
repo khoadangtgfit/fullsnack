@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -31,6 +32,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="business_domain")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
 public class BusinessDomain extends BaseAudit implements BaseReadonlyEntity<Integer> {
 	
 	@Id
@@ -46,11 +48,11 @@ public class BusinessDomain extends BaseAudit implements BaseReadonlyEntity<Inte
 	//bi-directional many-to-one association to Practice
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
+//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Practice practice;
 
 	//bi-directional many-to-one association to Project
 	@OneToMany(mappedBy="businessDomain", fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<Project> projects;
 
 }
