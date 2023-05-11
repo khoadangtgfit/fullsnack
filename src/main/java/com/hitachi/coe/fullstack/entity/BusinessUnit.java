@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -39,12 +40,10 @@ public class BusinessUnit extends BaseAudit implements BaseReadonlyEntity<Intege
 
 	//bi-directional many-to-one association to Employee
 	@OneToMany(mappedBy="businessUnit", fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<Employee> employees;
 
 	//bi-directional many-to-one association to Practice
 	@OneToMany(mappedBy="businessUnit", fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<Practice> practices;
 
 }
