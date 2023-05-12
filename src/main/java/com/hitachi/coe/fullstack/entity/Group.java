@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -36,7 +37,6 @@ public class Group extends BaseAudit implements BaseReadonlyEntity<Integer> {
 
 	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="group", fetch = FetchType.LAZY)
-	@JsonIgnore
 	private List<User> users;
 
 }
