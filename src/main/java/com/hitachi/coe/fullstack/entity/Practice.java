@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
 
@@ -26,6 +27,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="practice")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
 public class Practice extends BaseAudit implements BaseReadonlyEntity<Integer> {
 
 	@Id

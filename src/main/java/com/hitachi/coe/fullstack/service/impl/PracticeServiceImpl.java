@@ -10,6 +10,8 @@ import com.hitachi.coe.fullstack.repository.PracticeRepository;
 import com.hitachi.coe.fullstack.service.PracticeService;
 import com.hitachi.coe.fullstack.transformation.PracticeTransformer;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PracticeServiceImpl implements PracticeService {
@@ -19,6 +21,11 @@ public class PracticeServiceImpl implements PracticeService {
 
 	@Autowired
 	PracticeTransformer practiceTransformer;
+
+	@Override
+	public List<PracticeModel> getPractices() {
+		return practiceTransformer.applyList(practiceRepository.getPractices());
+	}
 
 	@Override
 	public PracticeModel addBusinessDomainToPratice(Practice practice) {

@@ -7,6 +7,7 @@ import com.hitachi.coe.fullstack.model.BusinessDomainModel;
 import com.hitachi.coe.fullstack.repository.BusinessDomainRepository;
 import com.hitachi.coe.fullstack.repository.PracticeRepository;
 import com.hitachi.coe.fullstack.service.BusinessDomainService;
+import com.hitachi.coe.fullstack.transformation.BusinessDomainModelTransformer;
 import com.hitachi.coe.fullstack.transformation.BusinessDomainTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ public class BusinessDomainServiceImpl implements BusinessDomainService {
     BusinessDomainTransformer businessDomainTransformer;
 
     @Autowired
+    BusinessDomainModelTransformer businessDomainModelTransformer;
+
+    @Autowired
     private PracticeRepository practiceRepository;
 
     @Override
@@ -41,7 +45,7 @@ public class BusinessDomainServiceImpl implements BusinessDomainService {
     public BusinessDomainModel addBusinessDomain(Integer practice_id, BusinessDomainModel businessDomainModel) {
         Practice practice = practiceRepository.findById(practice_id).orElseThrow(() -> new ResourceNotFoundException("not found practice by id = " + practice_id));
         businessDomainModel.setPractice(practice);
-        BusinessDomain businessDomain = businessDomainTransformer.applyModel(businessDomainModel);
+        BusinessDomain businessDomain = businessDomainModelTransformer.apply(businessDomainModel);
         businessDomain = businessDomainRepository.save(businessDomain);
         BusinessDomainModel businessDomainModel1 = new BusinessDomainModel();
         businessDomainModel1 = businessDomainTransformer.apply(businessDomain);
@@ -59,7 +63,7 @@ public class BusinessDomainServiceImpl implements BusinessDomainService {
     @Override
     public BusinessDomainModel updateBusinessDomainById(Integer business_domain_id, BusinessDomainModel businessDomainModel) {
         BusinessDomain businessDomainData = businessDomainRepository.findById(business_domain_id).orElseThrow(() -> new ResourceNotFoundException("not found businessdomain by id " + business_domain_id));
-        BusinessDomain businessDomain = businessDomainTransformer.applyModel(businessDomainModel);
+        BusinessDomain businessDomain = businessDomainModelTransformer.apply(businessDomainModel);
         businessDomain.setPractice(businessDomainData.getPractice());
         businessDomain.setId(business_domain_id);
         businessDomain.setCreated(businessDomainData.getCreated());

@@ -30,6 +30,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="business_domain")
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
