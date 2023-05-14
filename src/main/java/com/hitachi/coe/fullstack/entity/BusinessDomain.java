@@ -1,42 +1,28 @@
 package com.hitachi.coe.fullstack.entity;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hitachi.coe.fullstack.entity.base.BaseAudit;
 import com.hitachi.coe.fullstack.entity.base.BaseReadonlyEntity;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 
 /**
  * The persistent class for the business_domain database table.
  * 
  */
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
 @Table(name="business_domain")
-@JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
+@NamedQuery(name="BusinessDomain.findAll", query="SELECT b FROM BusinessDomain b")
 public class BusinessDomain extends BaseAudit implements BaseReadonlyEntity<Integer> {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -48,13 +34,12 @@ public class BusinessDomain extends BaseAudit implements BaseReadonlyEntity<Inte
 	private String name;
 
 	//bi-directional many-to-one association to Practice
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JsonIgnore
-//	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Practice practice;
 
 	//bi-directional many-to-one association to Project
-	@OneToMany(mappedBy="businessDomain", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="businessDomain")
 	private List<Project> projects;
 
 }
