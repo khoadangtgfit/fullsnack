@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,9 +20,9 @@ public class BusinessDomainController {
     @GetMapping("business-domains")
     @ApiOperation("This api will return list of Business Domains")
     public ResponseEntity<List<BusinessDomainModel>> getBusinessDomains() {
-        // Get lot by date range
+        //dang phuoc khoa
         List<BusinessDomainModel> listModel = new ArrayList<>();
-        listModel =businessDomainService.getBusinessDomains();
+        listModel = businessDomainService.getBusinessDomains();
         return ResponseEntity.ok(listModel);
     }
 
@@ -34,23 +32,22 @@ public class BusinessDomainController {
         return ResponseEntity.ok(businessDomainService.getBusinessDomainById(business_domains_id));
     }
 
-    @PutMapping("business-domains/{business-domains_id}")
+    @PutMapping("business-domains")
     @ApiOperation("This api will update a Business Domains by id")
-    public ResponseEntity<BusinessDomainModel> updateBusinessDomainById(@PathVariable("business-domains_id") Integer business_domains_id, @RequestBody BusinessDomainModel businessDomainModel) {
-        return ResponseEntity.ok(businessDomainService.updateBusinessDomainById(business_domains_id, businessDomainModel));
+    public ResponseEntity<BusinessDomainModel> updateBusinessDomainById(@RequestBody BusinessDomainModel businessDomainModel) {
+        return ResponseEntity.ok(businessDomainService.updateBusinessDomainById(businessDomainModel));
     }
 
-    @PostMapping("practices/{practice_id}/business_domains")
+    @PostMapping("business_domains")
     @ApiOperation("This api will add a Business Domains to a practice")
-    public ResponseEntity<BusinessDomainModel> addBusinessDomainToPractice(
-            @PathVariable("practice_id") Integer practice_id, @RequestBody BusinessDomainModel businessDomainModel) {
-        return ResponseEntity.ok(businessDomainService.addBusinessDomain(practice_id, businessDomainModel));
+    public ResponseEntity<BusinessDomainModel> addBusinessDomainToPractice(@RequestBody BusinessDomainModel businessDomainModel) {
+        return ResponseEntity.ok(businessDomainService.addBusinessDomain(businessDomainModel));
     }
 
     @DeleteMapping("business-domains/{business-domains_id}")
     @ApiOperation("This api will delete a Business Domains from database")
-    public ResponseEntity<List<BusinessDomainModel>> deleteBusinessDomainById(@PathVariable("business-domains_id") Integer business_domains_id){
-        return ResponseEntity.ok(businessDomainService.deleteBusinessDomainById(business_domains_id));
+    public void deleteBusinessDomainById(@PathVariable("business-domains_id") Integer business_domains_id) {
+        businessDomainService.deleteBusinessDomainById(business_domains_id);
     }
 
 }
