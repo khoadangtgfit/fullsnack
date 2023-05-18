@@ -23,9 +23,9 @@ public class PracticeController {
 		return ResponseEntity.ok(practiceService.getPractices());
 	}
 
-//	@PostMapping("practices")
-//	public ResponseEntity<PracticeModel> addPractice(){
-//		return re
-//	}
+	@PostMapping("practices")
+	public ResponseEntity<PracticeModel> addPractice(){
+		return re
+	}
 
 }
