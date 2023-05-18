@@ -1,5 +1,7 @@
 package com.hitachi.coe.fullstack.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hitachi.coe.fullstack.entity.BusinessUnit;
 import com.hitachi.coe.fullstack.model.base.AuditModel;
 
@@ -19,7 +21,8 @@ public class PracticeModel extends AuditModel<Integer>{
 	private String description;
 	
 	private String manager;
-	
+
+	@JsonIgnore
 	private BusinessUnit businessUnit;
 
 	
